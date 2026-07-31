@@ -1,35 +1,41 @@
 export default function Navbar() {
   return (
-    <nav className="fixed top-0 left-0 w-full bg-white/80 backdrop-blur-sm px-6 py-4">
-      <div className="mx-auto flex max-w-7xl items-center justify-between">
+    <nav className="fixed top-4 left-0 z-50 w-full px-6">
+      <div className="mx-auto flex max-w-5xl items-center justify-between rounded-2xl border border-gray-200 bg-white/80 px-8 py-3 shadow-lg backdrop-blur-md">
+
         {/* Logo */}
-        <h1 className="text-2xl font-bold text-[#0F3D5E]">
-          REON
-        </h1>
+        <div className="flex items-center gap-3">
+          <div className="h-5 w-5 rotate-45 rounded-sm border-2 border-[#0F3D5E]" />
 
-        {/* Navigation Links */}
-        <ul className="flex items-center gap-8 text-gray-700">
-          <li>
-            <a href="#features" className="transition hover:text-[#0F3D5E]">
-              Features
-            </a>
-          </li>
+          <h1 className="text-xl font-bold tracking-tight text-[#0F3D5E]">
+            VetMate
+          </h1>
+        </div>
 
-          <li>
-            <a href="#ai-insights" className="transition hover:text-[#0F3D5E]">
-              AI Insights
-            </a>
-          </li>
+        {/* Links */}
+        <ul className="flex items-center gap-10 text-[15px] font-medium text-gray-700">
 
-          <li>
-            <a href="#how-it-works" className="transition hover:text-[#0F3D5E]">
-              How It Works
-            </a>
-          </li>
+          {[
+            ["Features", "#features"],
+            ["Farmers", "#farmers"],
+            ["Veterinarians", "#veterinarians"],
+            ["AI Insights", "#ai-insights"],
+            ["How It Works", "#how-it-works"],
+          ].map(([title, href]) => (
+            <li key={title}>
+              <a
+                href={href}
+                className="group relative inline-block transition-colors duration-300 hover:text-[#0F3D5E]"
+              >
+                {title}
+
+                <span className="absolute left-0 -bottom-2 h-0.5 w-full origin-left scale-x-0 rounded-full bg-[#2563EB] transition-transform duration-500 ease-out group-hover:scale-x-100"></span>
+              </a>
+            </li>
+          ))}
         </ul>
 
-        {/* CTA Button */}
-        <button className="rounded-full bg-[#0F3D5E] px-5 py-2 font-medium text-white transition hover:bg-[#12486d]">
+        <button className="rounded-full bg-[#0F3D5E] px-6 py-2.5 font-semibold text-white transition-all duration-300 hover:scale-105 hover:bg-[#12486D]">
           Get Started
         </button>
       </div>

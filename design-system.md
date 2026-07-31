@@ -1,14 +1,14 @@
-# REON Design System
+# VETMATE Design System
 
 ## Overview
 
-This document defines the visual guidelines for REON. Following a consistent design system helps maintain a unified experience across the application as new features are added.
+This document defines the visual guidelines for VETMATE. Following a consistent design system helps maintain a unified experience across the application as new features are added.
 
 ---
 
 ## Brand
 
-**Name:** REON
+**Name:** VETMATE
 
 **Tagline:** Smarter Farming. Powered by AI.
 

@@ -1,6 +1,6 @@
-# REON
+# VetMate
 
-An AI-powered livestock management platform designed to help farmers manage livestock efficiently through intelligent technology, automation, and data-driven insights.
+VetMate is an AI-powered livestock healthcare platform built for both farmers and veterinarians. It helps monitor animal health, detect diseases early, manage health records, and make better decisions with the help of AI.
 
 ## Status
 
@@ -8,7 +8,7 @@ An AI-powered livestock management platform designed to help farmers manage live
 
 ## Vision
 
-REON aims to modernize livestock management by combining artificial intelligence with an intuitive user experience, helping farmers make better decisions through smart digital tools.
+The goal of VetMate is to make livestock healthcare more accessible and efficient by bringing farmers, veterinarians, and AI together on one platform.
 
 ## Tech Stack
 
@@ -24,11 +24,10 @@ REON aims to modernize livestock management by combining artificial intelligence
 - [x] Git & GitHub setup
 - [ ] Landing page
 - [ ] Authentication
-- [ ] Dashboard
+- [ ] Farmer dashboard
+- [ ] Veterinarian dashboard
 - [ ] AI integration
 - [ ] Deployment
-
-## License
 
 ## License
 
