@@ -1,4 +1,5 @@
 import Navbar from "@/components/navbar/Navbar";
+
 export default function Home() {
   return (
     <>
@@ -9,6 +10,9 @@ export default function Home() {
           REON
         </h1>
       </main>
+
+      {/* Temporary - only to test fixed navbar */}
+      <div className="h-[2000px]"></div>
     </>
   );
 }
