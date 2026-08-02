@@ -1,4 +1,4 @@
-# Day 002 – Branding & Hero Design
+# Day 002 – VetMate Finally Feels Real
 
 ## Date
 
@@ -8,55 +8,54 @@
 
 ## What I Did Today
 
-Today was mostly about redesigning the landing page and giving the project a proper identity.
+Today was a pretty big day.
 
-### Branding
+First of all, I finally thought of the name **VetMate**. I spent some time thinking about different names, but this one just felt right. After that, the project actually started feeling like something real instead of just another website.
 
-- Changed the project name from REON to VetMate
-- Renamed the GitHub repository
-- Updated the README
-- Changed the browser title and metadata
-- Added a custom favicon
+I updated the GitHub repository, changed the browser title, metadata, README and also added a favicon.
+
+---
 
 ### Navbar
 
-- Redesigned the navbar
-- Added a simple diamond logo
-- Improved the spacing
-- Added an underline animation on hover
-- Tweaked the floating glass effect
-- Improved the Get Started button
+Finally finished the Navbar.
+
+Honestly, I spent way too much time changing tiny things like spacing, hover animations and the glass effect. Every time I thought it was done, I'd notice something else and change it again.
+
+In the end, I added the underline hover animation, improved the spacing, redesigned the layout and finished the Get Started button.
+
+I'm actually really happy with how it turned out. Compared to Day 001, it doesn't even feel like the same Navbar anymore.
+
+---
 
 ### Hero Section
 
-- Redesigned the hero section
-- Tried different fonts before choosing one I liked
-- Highlighted "AI" in blue
-- Improved the spacing and layout
-- Added better hover effects to the buttons
-- Added a placeholder for the future product demo
+Started working on the Hero section today.
+
+Tried a lot of different fonts before finally settling on one that matched the look I wanted.
+
+Also highlighted "AI" in blue, improved the spacing, worked on the buttons and added a placeholder where the product preview will go later.
+
+It's still far from finished, but I can already imagine how I want the Hero section to look.
 
 ---
 
 ## Problems I Faced
 
-The biggest challenge today was choosing the right font.
+Choosing the font took way longer than I expected.
 
-I tried a few different fonts, but many of them made the hero section look too large or changed the feel of the website. After a lot of small changes, I finally found a style that looks much cleaner.
+Every time I picked one, I'd stare at it for a minute and then change it again because something felt off.
 
----
-
-## Plan for Tomorrow
-
-- Replace the placeholder with a looping product demo
-- Build the Features section
-- Add small animations
-- Start working on the AI Insights section
+I probably changed the font more times than I actually coded today.
 
 ---
 
 ## Notes
 
-I'm happy with today's progress. The project finally has its own identity instead of looking like a default Next.js app.
+Today honestly felt like a milestone.
 
-There are still lots of things to improve, but the overall design is starting to look much cleaner.
+Coming up with the name **VetMate** made everything feel a lot more real.
+
+The Navbar is finally in a place where I'm actually happy with it, and now I can put most of my focus into building the Hero section.
+
+Let's see how much I can improve it tomorrow.

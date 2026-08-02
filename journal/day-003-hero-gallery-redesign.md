@@ -1,4 +1,4 @@
-# Day 003 – Hero Gallery Redesign
+# Day 003 – Hero Gallery
 
 ## Date
 
@@ -8,61 +8,72 @@
 
 ## What I Did Today
 
-Today's work was mainly focused on redesigning the Hero Gallery and making it feel more interactive.
+Today was all about the Hero Gallery.
+
+Honestly, I changed the layout so many times that I lost count. Every time I thought it looked good, I'd find something that felt off and change it again.
+
+At first the cards looked too crowded, then they looked too far apart, then the images didn't even match each other.
+
+After trying a bunch of different layouts, I finally settled on one where the cards overlap slightly and each one has a different position and rotation. It already looks way better than the old version.
+
+---
 
 ### Hero Gallery
 
-- Tried several different gallery layouts
-- Replaced the simple grid with a staggered card layout
-- Added overlapping cards with different rotations
-- Improved the spacing to use more of the screen
-- Kept the gallery interactive by updating the dashboard when a card is selected
+Finished building the interactive Hero Gallery.
+
+- Added overlapping cards
+- Gave every card a different rotation and position
+- Connected the cards with the dashboard below
+- Clicking a card updates the dashboard
+- Improved the overall spacing so the Hero uses more of the screen
+
+---
 
 ### Hero Cards
 
-- Improved the HeroCard component
-- Better image sizing
-- Better shadows
-- Cleaner typography
-- Improved hover effects
-- Removed the badges from inside the cards
+Also spent some time improving the Hero cards.
+
+Made the images bigger, improved the shadows and cleaned up the text a bit.
+
+I also removed the badges from inside the cards because I had a better idea.
+
+---
 
 ### Floating Badges
 
-- Created a reusable `FloatingBadge.tsx` component
-- Used a glassmorphism design
-- Added badges for each section
-- Positioned the badges around the cards
-- Prepared the component for future animations
+Built a reusable `FloatingBadge.tsx` component.
+
+Instead of keeping the badges inside the cards, I moved them outside so later they'll float around the Hero section.
+
+Right now they're static, but I'll animate them later.
+
+---
 
 ### Images
 
-- Replaced the original images
-- Chose images that match each other better
-- Focused on realistic photos that fit the healthcare and technology theme
+Probably spent way more time searching for images than I expected.
+
+The first few looked completely different from each other, so the Hero felt messy.
+
+After changing them a few times, I finally found a set that actually matches and fits the look I'm going for.
 
 ---
 
 ## Problems I Faced
 
-Most of today's work was experimenting with different layouts instead of writing new features.
+The biggest problem today wasn't coding.
 
-I also ran into a few JSX errors while changing the Hero Gallery. Updating the component step by step instead of replacing everything at once made it much easier to fix the problems.
+It was trying to make everything look right.
 
----
-
-## Plan for Tomorrow
-
-- Improve the position of the floating badges
-- Add floating animations
-- Improve the active card styling
-- Add entrance animations
-- Finish polishing the Hero section
+I also broke the Hero Gallery a few times because I kept replacing large chunks of code. After that I started changing things step by step instead, and it made fixing errors much easier.
 
 ---
 
 ## Notes
 
-Today's progress was slower than I expected because I spent a lot of time experimenting with different layouts. Even though it took longer, I think it was worth it because the Hero section already looks much better than it did yesterday.
+Today's work took longer than I expected, but I think it was worth it.
 
-There are still a few small details left, but I'm getting much closer to the final design.
+The Hero section finally feels like it's becoming the main attraction of the landing page instead of just another section.
+
+There's still a lot of polishing left, especially the animations, but I'm really happy with the direction it's going.
