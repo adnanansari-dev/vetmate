@@ -4,6 +4,7 @@ export interface FeatureSection {
   title: string;
   description: string;
   tagColor: string;
+  image: string;
   popupDetails: {
     overview: string;
     highlights: string[];
@@ -19,6 +20,7 @@ export const featureSections: FeatureSection[] = [
     title: "AI Health Analysis",
     description: "Detect health issues before they become serious. Advanced machine learning algorithms analyze vital signs and early indicators to keep your herd healthy.",
     tagColor: "text-blue-600 bg-blue-50 border-blue-200",
+    image: "/image/ai-health.png", // Points to public/image/ai-health.png
     popupDetails: {
       overview: "Our proprietary AI models monitor thermal imaging, movement patterns, and feeding behavior to detect early pathology up to 48 hours before physical symptoms manifest.",
       highlights: [
@@ -36,6 +38,7 @@ export const featureSections: FeatureSection[] = [
     title: "Smart Farm Dashboard",
     description: "Monitor every animal, alert, and farm metric in one place. Get a single source of truth for your entire livestock operations.",
     tagColor: "text-indigo-600 bg-indigo-50 border-indigo-200",
+    image: "/rec/smart-dashboard.png", // Points to public/rec/smart-dashboard.png
     popupDetails: {
       overview: "Consolidate all animal records, herd health histories, and environmental sensor readings into a unified, customizable command center.",
       highlights: [
@@ -53,6 +56,7 @@ export const featureSections: FeatureSection[] = [
     title: "Live Health Monitoring",
     description: "Track vital health data and receive instant alerts. Immediate notifications enable rapid response before critical conditions develop.",
     tagColor: "text-emerald-600 bg-emerald-50 border-emerald-200",
+    image: "/image/live-monitoring.png", // Points to public/image/
     popupDetails: {
       overview: "Stream live telemetry directly to your phone or desktop. Set automated triggers so farm staff are instantly notified of emergency events.",
       highlights: [
@@ -70,6 +74,7 @@ export const featureSections: FeatureSection[] = [
     title: "Vaccination & Treatment",
     description: "Never miss a vaccine or medication schedule again. Digital logs and automated tracking ensure complete clinical compliance.",
     tagColor: "text-amber-600 bg-amber-50 border-amber-200",
+    image: "/rec/vaccination.png", // Points to public/rec/
     popupDetails: {
       overview: "Automate complex dosing calendars, withdrawal period tracking, and veterinarian treatment plans across thousands of individual animals.",
       highlights: [
@@ -87,6 +92,7 @@ export const featureSections: FeatureSection[] = [
     title: "Farm Performance Analytics",
     description: "Measure productivity, growth, and overall herd performance. Benchmark your metrics against regional data to optimize operational yield.",
     tagColor: "text-purple-600 bg-purple-50 border-purple-200",
+    image: "/image/farm-analytics.png", // Points to public/image/
     popupDetails: {
       overview: "Transform daily operational data into actionable profitability strategies. Compare feed-conversion ratios and growth trends effortlessly.",
       highlights: [
@@ -104,6 +110,7 @@ export const featureSections: FeatureSection[] = [
     title: "AI Disease Prediction",
     description: "Predict potential outbreaks using AI and historical farm data. Proactive risk forecasting helps safeguard your animals from widespread risk.",
     tagColor: "text-rose-600 bg-rose-50 border-rose-200",
+    image: "/rec/disease-prediction.png", // Points to public/rec/
     popupDetails: {
       overview: "Analyze hyper-local weather shifts, regional outbreak reports, and historical herd records to forecast contagion risks before they spread.",
       highlights: [

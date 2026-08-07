@@ -4,6 +4,7 @@ export interface FarmerBenefit {
   tagColor: string;
   title: string;
   shortDesc: string;
+  icon: string;
   statValue: string;
   statLabel: string;
   popupDetails: {
@@ -19,6 +20,7 @@ export const farmerBenefits: FarmerBenefit[] = [
     tagColor: "bg-blue-50 text-blue-700 border-blue-200",
     title: "AI Visual Health Scan",
     shortDesc: "Point your phone camera at any animal. Advanced computer vision assesses body condition, gait, and early sickness indicators in seconds.",
+    icon: "📱",
     statValue: "5 Seconds",
     statLabel: "Camera scan time to detect early illness indicators",
     popupDetails: {
@@ -36,6 +38,7 @@ export const farmerBenefits: FarmerBenefit[] = [
     tagColor: "bg-emerald-50 text-emerald-700 border-emerald-200",
     title: "Smart Pasture Geo-Tagging",
     shortDesc: "Log herd locations effortlessly. The app drops accurate GPS pins whenever you scan animals during your daily farm walk.",
+    icon: "📍",
     statValue: "0 Extra Cost",
     statLabel: "Uses your phone's built-in GPS location engine",
     popupDetails: {
@@ -53,6 +56,7 @@ export const farmerBenefits: FarmerBenefit[] = [
     tagColor: "bg-amber-50 text-amber-700 border-amber-200",
     title: "Acoustic Symptom Detector",
     shortDesc: "Record 10 seconds of barn audio. AI filters ambient noise to flag coughing frequency, wheezing, and respiratory stress early.",
+    icon: "🎙️",
     statValue: "94% Accuracy",
     statLabel: "Precision in detecting respiratory coughing patterns",
     popupDetails: {
@@ -70,6 +74,7 @@ export const farmerBenefits: FarmerBenefit[] = [
     tagColor: "bg-purple-50 text-purple-700 border-purple-200",
     title: "1-Tap Vet Consultation",
     shortDesc: "Snap a photo of an issue and instantly share AI diagnostic notes with certified veterinarians for quick phone consultations.",
+    icon: "🩺",
     statValue: "< 15 Min",
     statLabel: "Average response time for digital vet review",
     popupDetails: {

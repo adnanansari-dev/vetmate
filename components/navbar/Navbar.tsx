@@ -40,8 +40,8 @@ export default function Navbar() {
           {[
             ["Features", "#features"],
             ["Farmers", "#farmers"],
-            ["Veterinarians", "#veterinarians"],
-            ["AI Insights", "#ai-insights"],
+            ["Veterinarians", "#vets"],
+            ["AI Insights", "#insights"],
             ["How It Works", "#how-it-works"],
           ].map(([title, href]) => (
             <li key={title}>
