@@ -56,7 +56,7 @@ export const vetBenefits: VetBenefit[] = [
     statValue: "< 3 Mins",
     statLabel: "Average pre-consultation review time",
     popupDetails: {
-      overview: "Review structured case notes before stepping onto the farm or joining a video call. Farmers' pre-scanned media is automatically converted into clinical summaries.",
+      overview: "Review structured case notes before stepping onto the farm or joining a video call. Livestock Keepers' pre-scanned media is automatically converted into clinical summaries.",
       highlights: [
         "Automated calendar syncing for field and tele-health visits",
         "Pre-analyzed video clips highlighting movement or skin issues",

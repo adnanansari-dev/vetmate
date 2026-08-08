@@ -25,7 +25,7 @@ const features = [
   },
   {
     title: "Built for Everyone",
-    subtitle: "Farmers, and vets",
+    subtitle: "Livestock Keepers, and vets",
     badgeBg: "bg-purple-100/80 text-purple-600",
     icon: (
       <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

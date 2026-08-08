@@ -37,7 +37,7 @@ export default function Footer() {
           <ul className="space-y-2.5 text-sm">
             <li><a href="#features" className="hover:text-white transition-colors">Features</a></li>
             <li><a href="#comparison" className="hover:text-white transition-colors">Comparison</a></li>
-            <li><a href="#farmers" className="hover:text-white transition-colors">For Farmers</a></li>
+            <li><a href="#farmer" className="hover:text-white transition-colors">For Livestock Keepers</a></li>
             <li><a href="#vets" className="hover:text-white transition-colors">For Vets</a></li>
           </ul>
         </div>

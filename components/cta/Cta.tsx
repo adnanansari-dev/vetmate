@@ -31,7 +31,7 @@ export default function Cta() {
         {/* Single "Get Started" Action Button */}
         <div className="relative z-10 pt-2">
           <Link
-            href="/get-started"
+            href="/auth"
             className="inline-flex items-center gap-2 bg-[#0F172A] hover:bg-slate-800 text-white font-bold text-base px-8 py-4 rounded-full transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0"
           >
             <span>Get Started</span>

@@ -10,7 +10,7 @@ const jakarta = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   title: "VetMate",
   description:
-    "AI-powered livestock healthcare platform for farmers and veterinarians.",
+    "AI-powered livestock healthcare platform for livestock keepers and veterinarians.",
 };
 
 export default function RootLayout({

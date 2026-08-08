@@ -1,34 +1,45 @@
 # VetMate
 
-VetMate is an AI-powered livestock healthcare platform built for both farmers and veterinarians. It helps monitor animal health, detect diseases early, manage health records, and make better decisions with the help of AI.
+VetMate is an AI-powered livestock healthcare platform designed to bridge the gap between livestock keepers and veterinarians. Whether it is keeping a close eye on herd health, catching early signs of illness, or keeping medical records organized, VetMate brings modern AI tools into daily animal care.
+
+---
 
 ## Status
 
-🚧 Under active development.
+Under active, passionate development. Things are moving fast and coming together step by step.
 
-## Vision
+---
 
-The goal of VetMate is to make livestock healthcare more accessible and efficient by bringing farmers, veterinarians, and AI together on one platform.
+## Our Vision
+
+Managing livestock health should not feel disjointed or stressful. VetMate aims to make quality veterinary care accessible, timely, and smart by giving livestock keepers, vets, and AI a shared space to collaborate.
+
+---
 
 ## Tech Stack
 
-- Next.js
-- React
-- TypeScript
-- Tailwind CSS
-- shadcn/ui
+Built with a modern, responsive web tech stack:
 
-## Current Progress
+* Framework: Next.js (React)
+* Language: TypeScript
+* Styling: Tailwind CSS
+* Components: shadcn/ui
 
-- [x] Project setup
-- [x] Git & GitHub setup
-- [ ] Landing page
-- [ ] Authentication
-- [ ] Farmer dashboard
+---
+
+## Roadmap & Progress
+
+- [x] Initial project setup
+- [x] Git & GitHub repository configured
+- [x] Landing page design & copy
+- [ ] User authentication flow
+- [ ] Livestock Keeper dashboard
 - [ ] Veterinarian dashboard
-- [ ] AI integration
-- [ ] Deployment
+- [ ] AI health diagnostics & insights integration
+- [ ] Production deployment
+
+---
 
 ## License
 
-License information will be added before the first public release.
+License details will be added prior to the official first public release.

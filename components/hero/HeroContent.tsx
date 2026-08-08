@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 import FloatingBadge from "./FloatingBadge";
 import FloatingBadges from "./FloatingBadges";
 
@@ -30,7 +31,7 @@ export default function HeroContent() {
           transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           className="mt-6 text-base sm:text-lg text-slate-600 max-w-xl mx-auto leading-relaxed font-normal transform-gpu"
         >
-          VetMate helps farmers and veterinarians detect diseases early,
+          VetMate helps Livestock Keepers and veterinarians detect diseases early,
           manage livestock health records, and make better decisions with
           intelligent AI-powered insights.
         </motion.p>
@@ -42,13 +43,15 @@ export default function HeroContent() {
           transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           className="mt-8 flex items-center justify-center gap-4"
         >
-          <motion.button
-            whileTap={{ scale: 0.97 }}
-            className="group relative overflow-hidden rounded-full bg-[#0F3D5E] px-8 py-3.5 text-sm font-semibold text-white shadow-md cursor-pointer transform-gpu transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-0.5 hover:bg-[#134A72] hover:shadow-lg hover:shadow-blue-900/20"
-          >
-            <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/15 to-transparent transition-transform duration-1000 ease-in-out group-hover:translate-x-full" />
-            <span className="relative z-10">Get Started</span>
-          </motion.button>
+          <Link href="/auth">
+            <motion.div
+              whileTap={{ scale: 0.97 }}
+              className="group relative overflow-hidden rounded-full bg-[#0F3D5E] px-8 py-3.5 text-sm font-semibold text-white shadow-md cursor-pointer transform-gpu transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-0.5 hover:bg-[#134A72] hover:shadow-lg hover:shadow-blue-900/20"
+            >
+              <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/15 to-transparent transition-transform duration-1000 ease-in-out group-hover:translate-x-full" />
+              <span className="relative z-10">Get Started</span>
+            </motion.div>
+          </Link>
 
           <motion.button
             whileTap={{ scale: 0.97 }}
