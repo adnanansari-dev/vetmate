@@ -2,25 +2,39 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { signIn } from "next-auth/react";
 
 export default function AuthCard() {
+  const router = useRouter();
   const [isSignUp, setIsSignUp] = useState(false);
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
 
   const mode = isSignUp ? "signup" : "login";
-  
+
   const content = {
     title: { login: "Welcome back", signup: "Create your account" },
-    subtitle: { 
-      login: "Enter your details to access your dashboard", 
-      signup: "Start managing your operations intelligently" 
+    subtitle: {
+      login: "Enter your details to access your dashboard",
+      signup: "Start managing your operations intelligently"
     },
     button: { login: "Sign In", signup: "Create Account" },
-    toggle: { 
-      login: { text: "Don't have an account yet?", link: "Sign Up" }, 
+    toggle: {
+      login: { text: "Don't have an account yet?", link: "Sign Up" },
       signup: { text: "Already have an account?", link: "Sign In" }
     }
+  };
+
+  const handleEmailSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const params = new URLSearchParams();
+    if (email) params.set("email", email);
+    if (name) params.set("name", name);
+
+    router.push(`/onboarding?${params.toString()}`);
   };
 
   return (
@@ -65,10 +79,10 @@ export default function AuthCard() {
         <p className="text-sm text-slate-500">{content.subtitle[mode]}</p>
       </div>
 
-      {/* Google Button */}
+      {/* Google Button - Auth.js v5 style */}
       <button
         type="button"
-        onClick={() => signIn("google", { callbackUrl: "/" })}
+        onClick={() => signIn("google", { redirectTo: "/onboarding" })}
         className="w-full flex items-center justify-center gap-3 py-3 px-4 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 font-semibold text-sm transition-all shadow-sm hover:shadow cursor-pointer"
       >
         <svg className="w-5 h-5" viewBox="0 0 24 24">
@@ -90,6 +104,7 @@ export default function AuthCard() {
       <AnimatePresence mode="wait" initial={false}>
         <motion.form
           key={mode}
+          onSubmit={handleEmailSubmit}
           initial={{ opacity: 0, y: 4 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -4 }}
@@ -99,18 +114,39 @@ export default function AuthCard() {
           {isSignUp && (
             <div className="space-y-1.5 text-left">
               <label className="text-xs font-bold text-slate-700 uppercase tracking-wider">Full Name</label>
-              <input type="text" required placeholder="xyz" className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-blue-600 text-slate-900 text-sm transition-colors bg-slate-50/50" />
+              <input
+                type="text"
+                required
+                placeholder="xyz"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-blue-600 text-slate-900 text-sm transition-colors bg-slate-50/50"
+              />
             </div>
           )}
 
           <div className="space-y-1.5 text-left">
             <label className="text-xs font-bold text-slate-700 uppercase tracking-wider">Email</label>
-            <input type="email" required placeholder="name@example.com" className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-blue-600 text-slate-900 text-sm transition-colors bg-slate-50/50" />
+            <input
+              type="email"
+              required
+              placeholder="name@example.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-blue-600 text-slate-900 text-sm transition-colors bg-slate-50/50"
+            />
           </div>
 
           <div className="space-y-1.5 text-left">
             <label className="text-xs font-bold text-slate-700 uppercase tracking-wider">Password</label>
-            <input type="password" required placeholder="••••••••" className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-blue-600 text-slate-900 text-sm transition-colors bg-slate-50/50" />
+            <input
+              type="password"
+              required
+              placeholder="••••••••"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-blue-600 text-slate-900 text-sm transition-colors bg-slate-50/50"
+            />
           </div>
 
           <button
