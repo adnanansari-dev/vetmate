@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
+import { signIn } from "next-auth/react";
 
 export default function AuthCard() {
   const [isSignUp, setIsSignUp] = useState(false);
@@ -67,6 +68,7 @@ export default function AuthCard() {
       {/* Google Button */}
       <button
         type="button"
+        onClick={() => signIn("google", { callbackUrl: "/" })}
         className="w-full flex items-center justify-center gap-3 py-3 px-4 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 font-semibold text-sm transition-all shadow-sm hover:shadow cursor-pointer"
       >
         <svg className="w-5 h-5" viewBox="0 0 24 24">
