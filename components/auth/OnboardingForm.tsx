@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useRef } from "react"
-import Image from "next/image"
+import { useRouter } from "next/navigation"
 
 interface OnboardingFormProps {
   initialName?: string
@@ -14,10 +14,12 @@ export default function OnboardingForm({
   initialEmail = "",
   initialImage = "",
 }: OnboardingFormProps) {
+  const router = useRouter()
+
   const [name, setName] = useState(initialName)
   const [email, setEmail] = useState(initialEmail)
   const [dob, setDob] = useState("")
-  const [role, setRole] = useState<"vet" | "livestock_keeper">("vet")
+  const [role, setRole] = useState<"vet" | "livestock_keeper">("livestock_keeper")
 
   const [customImage, setCustomImage] = useState<string | null>(null)
   const [isRemoved, setIsRemoved] = useState(false)
@@ -52,7 +54,15 @@ export default function OnboardingForm({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
+
     console.log("Submitted Profile:", { name, email, dob, role, imagePreview })
+
+    // Redirect based on selected role
+    if (role === "livestock_keeper") {
+      router.push("/livestock-dashboard")
+    } else if (role === "vet") {
+      router.push("/vet-dashboard")
+    }
   }
 
   return (
