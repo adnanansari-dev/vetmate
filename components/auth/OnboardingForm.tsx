@@ -2,6 +2,7 @@
 
 import { useState, useRef } from "react"
 import { useRouter } from "next/navigation"
+import { useSession } from "next-auth/react"
 
 interface OnboardingFormProps {
   initialName?: string
@@ -15,6 +16,7 @@ export default function OnboardingForm({
   initialImage = "",
 }: OnboardingFormProps) {
   const router = useRouter()
+  const { update } = useSession()
 
   const [name, setName] = useState(initialName)
   const [email, setEmail] = useState(initialEmail)
@@ -23,13 +25,16 @@ export default function OnboardingForm({
 
   const [customImage, setCustomImage] = useState<string | null>(null)
   const [isRemoved, setIsRemoved] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
-  const imagePreview = isRemoved ? "" : customImage ?? initialImage
+  // Safe image preview fallback
+  const imagePreview = isRemoved ? "" : (customImage || initialImage)
   const fileInputRef = useRef<HTMLInputElement>(null)
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
     if (file) {
+      // Create local temporary URL for UI preview only (won't bloat cookie)
       const imageUrl = URL.createObjectURL(file)
       setCustomImage(imageUrl)
       setIsRemoved(false)
@@ -39,35 +44,48 @@ export default function OnboardingForm({
   const handleRemoveImage = () => {
     setIsRemoved(true)
     setCustomImage(null)
-    if (fileInputRef.current) {
-      fileInputRef.current.value = ""
-    }
+    if (fileInputRef.current) fileInputRef.current.value = ""
   }
 
   const handleResetToGoogle = () => {
     setIsRemoved(false)
     setCustomImage(null)
-    if (fileInputRef.current) {
-      fileInputRef.current.value = ""
-    }
+    if (fileInputRef.current) fileInputRef.current.value = ""
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    setIsSubmitting(true)
 
-    console.log("Submitted Profile:", { name, email, dob, role, imagePreview })
+    try {
+      // Keep cookie lightweight: Use initial Google image or clean URL
+      const safeImage = isRemoved ? "" : (initialImage || customImage || "")
 
-    // Redirect based on selected role
-    if (role === "livestock_keeper") {
-      router.push("/livestock-dashboard")
-    } else if (role === "vet") {
-      router.push("/vet-dashboard")
+      await update({
+        name,
+        email,
+        image: safeImage,
+        role,
+        dob,
+      })
+
+      if (role === "livestock_keeper") {
+        router.push("/livestock-dashboard")
+      } else if (role === "vet") {
+        router.push("/vet-dashboard")
+      }
+      
+      router.refresh()
+    } catch (error) {
+      console.error("Onboarding submission error:", error)
+    } finally {
+      setIsSubmitting(false)
     }
   }
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
-      {/* Profile Picture Upload Section */}
+      {/* Profile Picture Section */}
       <div className="flex flex-col items-center space-y-3">
         <div className="relative group">
           {imagePreview ? (
@@ -85,7 +103,7 @@ export default function OnboardingForm({
           <button
             type="button"
             onClick={() => fileInputRef.current?.click()}
-            className="absolute bottom-0 right-0 p-1.5 bg-[#111827] text-[#ffffff] rounded-full hover:bg-black transition-all duration-200 shadow-md active:scale-95 cursor-pointer"
+            className="absolute bottom-0 right-0 p-1.5 bg-[#111827] text-white rounded-full hover:bg-black transition-all duration-200 shadow-md active:scale-95 cursor-pointer"
             title="Change Profile Picture"
           >
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -95,7 +113,6 @@ export default function OnboardingForm({
           </button>
         </div>
 
-        {/* Hidden File Input */}
         <input
           ref={fileInputRef}
           type="file"
@@ -104,7 +121,6 @@ export default function OnboardingForm({
           className="hidden"
         />
 
-        {/* Dynamic Photo Actions */}
         <div className="flex items-center gap-3 text-xs">
           <button
             type="button"
@@ -192,7 +208,6 @@ export default function OnboardingForm({
           Select Your Occupation
         </label>
         <div className="grid grid-cols-2 gap-3">
-          {/* Veterinarian Button */}
           <button
             type="button"
             onClick={() => setRole("vet")}
@@ -203,16 +218,11 @@ export default function OnboardingForm({
             }`}
           >
             <div className="w-12 h-12 mb-2 flex items-center justify-center transition-transform duration-200 group-hover:scale-110">
-              <img
-                src="/images/vet-icon.jpg"
-                alt="Veterinarian"
-                className="w-full h-full object-contain rounded-md"
-              />
+              <img src="/images/vet-icon.jpg" alt="Veterinarian" className="w-full h-full object-contain rounded-md" />
             </div>
             <span className="text-sm font-semibold">Veterinarian</span>
           </button>
 
-          {/* Livestock Keeper Button */}
           <button
             type="button"
             onClick={() => setRole("livestock_keeper")}
@@ -223,32 +233,25 @@ export default function OnboardingForm({
             }`}
           >
             <div className="w-12 h-12 mb-2 flex items-center justify-center transition-transform duration-200 group-hover:scale-110">
-              <img
-                src="/images/livestock-icon.jpg"
-                alt="Livestock Keeper"
-                className="w-full h-full object-contain rounded-md"
-              />
+              <img src="/images/livestock-icon.jpg" alt="Livestock Keeper" className="w-full h-full object-contain rounded-md" />
             </div>
             <span className="text-sm font-semibold">Livestock Keeper</span>
           </button>
         </div>
       </div>
 
-      {/* Main Submit Button */}
+      {/* Submit Button */}
       <button
         type="submit"
-        className="w-full py-3.5 px-4 font-medium text-[#ffffff] bg-[#111827] rounded-xl hover:bg-black transition-all duration-200 transform active:scale-[0.98] shadow-sm hover:shadow-md cursor-pointer flex items-center justify-center gap-2 group"
+        disabled={isSubmitting}
+        className="w-full py-3.5 px-4 font-medium text-white bg-[#111827] rounded-xl hover:bg-black transition-all duration-200 transform active:scale-[0.98] shadow-sm hover:shadow-md cursor-pointer flex items-center justify-center gap-2 group disabled:opacity-50 disabled:cursor-not-allowed"
       >
-        <span>Continue</span>
-        <svg
-          className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          strokeWidth={2}
-        >
-          <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-        </svg>
+        <span>{isSubmitting ? "Saving..." : "Continue"}</span>
+        {!isSubmitting && (
+          <svg className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
+        )}
       </button>
     </form>
   )
