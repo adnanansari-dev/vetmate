@@ -9,9 +9,11 @@ export const middleware = auth((req) => {
   const isAuthPage =
     nextUrl.pathname.startsWith("/auth") ||
     nextUrl.pathname.startsWith("/onboarding");
+
   const isHomePage = nextUrl.pathname === "/";
 
-  if (!isLoggedIn && !isAuthPage) {
+  // Allow everyone to access the landing page and auth pages
+  if (!isLoggedIn && !isHomePage && !isAuthPage) {
     return NextResponse.redirect(new URL("/auth", req.url));
   }
 
@@ -19,19 +21,24 @@ export const middleware = auth((req) => {
     const targetDashboard =
       userRole === "vet" ? "/vet-dashboard" : "/livestock-dashboard";
 
-    if (isHomePage || isAuthPage) {
+    // Send logged-in users away from auth/onboarding pages
+    if (isAuthPage) {
       return NextResponse.redirect(new URL(targetDashboard, req.url));
     }
 
-    if (nextUrl.pathname.startsWith("/vet-dashboard") && userRole !== "vet") {
-      return NextResponse.redirect(new URL("/livestock-dashboard", req.url));
-    }
-
+    // Keep users on the correct dashboard for their role
     if (
       nextUrl.pathname.startsWith("/livestock-dashboard") &&
       userRole === "vet"
     ) {
       return NextResponse.redirect(new URL("/vet-dashboard", req.url));
+    }
+
+    if (
+      nextUrl.pathname.startsWith("/vet-dashboard") &&
+      userRole !== "vet"
+    ) {
+      return NextResponse.redirect(new URL("/livestock-dashboard", req.url));
     }
   }
 
